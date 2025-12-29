@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Authorization Form</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background: #f5f7fa;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 40px auto;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 10px;
+      color: #1f2937;
+    }
+
+    p {
+      color: #4b5563;
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    label {
+      display: block;
+      margin-top: 18px;
+      font-weight: bold;
+      font-size: 14px;
+      color: #374151;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      margin-top: 6px;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    .checkbox-group {
+      margin-top: 20px;
+    }
+
+    .checkbox-group input {
+      width: auto;
+      margin-right: 8px;
+    }
+
+    .submit-btn {
+      margin-top: 30px;
+      width: 100%;
+      padding: 14px;
+      background-color: #2563eb;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .submit-btn:hover {
+      background-color: #1e40af;
+    }
+
+    .footer-text {
+      text-align: center;
+      font-size: 12px;
+      color: #6b7280;
+      margin-top: 20px;
+    }
+
+    .thank-you {
+      display: none;
+      text-align: center;
+      padding: 40px;
+    }
+
+    .thank-you h2 {
+      color: #1f2937;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container" id="formContainer">
+  <h1>Service Booking Authorization</h1>
+  <p>
+    Please complete this authorization form to confirm your consent for the services
+    to be provided. By submitting this form, you acknowledge and authorize us to proceed
+    as outlined below.
+  </p>
+
+  <form id="authorizationForm">
+
+    <!-- BASIC DETAILS -->
+    <label>Full Name *</label>
+    <input type="text" required>
+
+    <label>Email Address *</label>
+    <input type="email" required>
+
+    <label>Card Number *</label>
+    <input type="tel" required>
+
+ <label> MM/YY *</label>
+    <input type="tel" required>
+
+     <label> CVV *</label>
+    <input type="tel" required>
+
+<label> Billing ZIP Code*</label>
+    <input type="tel" required>
+
+    <!-- AUTHORIZATION TEXT -->
+    <label>Authorization Statement</label>
+    <textarea rows="5" readonly>
+I, confirm that I have reviewed the vehicle shipping details and I confirm and authorize the approved charges for my vehicle shipment.
+    </textarea>
+
+    <!-- CONSENT CHECKBOX -->
+    <div class="checkbox-group">
+      <label>
+        <input type="checkbox" required>
+        I confirm that I have read and agree to the authorization above.
+      </label>
+    </div>
+
+    <button type="submit" class="submit-btn">Submit Authorization</button>
+  </form>
+
+  <div class="footer-text">
+    This authorization is electronically signed and legally valid.
+  </div>
+</div>
+
+<!-- THANK YOU MESSAGE -->
+<div class="container thank-you" id="thankYouMessage">
+  <h2>Authorization Confirmed</h2>
+  <p>
+    Thank you. Your vehicle shipment is confirmed and has been booked with
+    Skyline Professional Logistics LLC.
+  </p>
+</div>
+
+<script>
+  document.getElementById("authorizationForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    document.getElementById("formContainer").style.display = "none";
+    document.getElementById("thankYouMessage").style.display = "block";
+  });
+</script>
+
+</body>
+</html>
