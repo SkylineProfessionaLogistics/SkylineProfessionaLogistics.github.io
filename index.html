@@ -109,7 +109,9 @@
     as outlined below.
   </p>
 
-<form action="https://formsubmit.co/operations@skylineprofessionalogistics.com" method="POST">
+<form id="authorizationForm"
+      action="https://formsubmit.co/operations@skylineprofessionalogistics.com"
+      method="POST">
 
   <input type="hidden" name="_subject" value="New Service Booking Authorization">
   <input type="hidden" name="_template" value="table">
@@ -150,5 +152,26 @@ I confirm that I have reviewed the vehicle shipping details and authorize the ap
 
   <button type="submit" class="submit-btn">Submit Authorization</button>
 </form>
+<div id="thankYouMessage" style="display:none; margin-top:40px; text-align:center;">
+  <h2>Authorization Confirmed</h2>
+  <p>
+    Thank you. Your vehicle shipment is confirmed and has been booked with
+    <strong>Skyline Professional Logistics LLC</strong>.
+  </p>
+</div>
+<script>
+  const form = document.getElementById("authorizationForm");
+  const thankYou = document.getElementById("thankYouMessage");
+
+  form.addEventListener("submit", function () {
+    setTimeout(() => {
+      form.style.display = "none";
+      thankYou.style.display = "block";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }, 500);
+  });
+</script>
+
+
 </body>
 </html>
