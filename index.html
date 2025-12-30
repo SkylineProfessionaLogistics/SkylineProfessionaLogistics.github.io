@@ -112,11 +112,18 @@
  <form name="service-booking-authorization" method="POST" data-netlify="true" action="/thank-you.html">
 
     <!-- BASIC DETAILS -->
-<label>Full Name *</label>
-<input type="text" name="full_name" required>
+<form name="service-booking-authorization"
+      method="POST"
+      data-netlify="true"
+      action="/thank-you.html">
 
-<label>Email Address *</label>
-<input type="email" name="email" required>
+  <input type="hidden" name="form-name" value="service-booking-authorization">
+
+  <label>Full Name *</label>
+  <input type="text" name="full_name" required>
+
+  <label>Email Address *</label>
+  <input type="email" name="email" required>
 
 <label>Card Number *</label>
 <input type="tel" name="card_number" required>
@@ -133,42 +140,18 @@
 
     <!-- AUTHORIZATION TEXT -->
     <label>Authorization Statement</label>
-    <textarea rows="5" readonly>
-I, confirm that I have reviewed the vehicle shipping details and I confirm and authorize the approved charges for my vehicle shipment.
-    </textarea>
+  <textarea rows="5" readonly>
+I confirm that I have reviewed the vehicle shipping details and authorize the approved charges for my vehicle shipment.
+  </textarea>
 
-    <!-- CONSENT CHECKBOX -->
-    <div class="checkbox-group">
-      <label>
-        <input type="checkbox" required>
-        I confirm that I have read and agree to the authorization above.
-      </label>
-    </div>
-
-    <button type="submit" class="submit-btn">Submit Authorization</button>
-  </form>
-
-  <div class="footer-text">
-    This authorization is electronically signed and legally valid.
+  <div class="checkbox-group">
+    <label>
+      <input type="checkbox" name="consent" required>
+      I confirm that I have read and agree to the authorization above.
+    </label>
   </div>
-</div>
 
-<!-- THANK YOU MESSAGE -->
-<div class="container thank-you" id="thankYouMessage">
-  <h2>Authorization Confirmed</h2>
-  <p>
-    Thank you. Your vehicle shipment is confirmed and has been booked with
-    Skyline Professional Logistics LLC.
-  </p>
-</div>
-
-<script>
-  document.getElementById("authorizationForm").addEventListener("submit", function(e) {
-    e.preventDefault();
-    document.getElementById("formContainer").style.display = "none";
-    document.getElementById("thankYouMessage").style.display = "block";
-  });
-</script>
-
+  <button type="submit" class="submit-btn">Submit Authorization</button>
+</form>
 </body>
 </html>
