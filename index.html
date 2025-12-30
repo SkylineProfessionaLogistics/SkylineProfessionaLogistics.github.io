@@ -151,7 +151,9 @@ I confirm that I have reviewed the vehicle shipping details and authorize the ap
     </label>
   </div>
 
-  <button type="submit" class="submit-btn">Submit Authorization</button>
+<button type="button" id="submitBtn" class="submit-btn">
+  Submit Authorization
+</button>
 </form>
 </div>
 <div id="thankYouMessage" style="display:none; margin-top:40px; text-align:center;">
@@ -165,21 +167,29 @@ I confirm that I have reviewed the vehicle shipping details and authorize the ap
   const form = document.getElementById("authorizationForm");
   const wrapper = document.getElementById("formWrapper");
   const thankYou = document.getElementById("thankYouMessage");
+  const submitBtn = document.getElementById("submitBtn");
 
-  form.addEventListener("submit", function () {
+  submitBtn.addEventListener("click", function () {
     fetch(form.action, {
       method: "POST",
       body: new FormData(form),
-      headers: { 'Accept': 'application/json' }
-    }).then(() => {
-      wrapper.style.display = "none";
-      thankYou.style.display = "block";
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      headers: {
+        "Accept": "application/json"
+      }
+    })
+    .then(response => {
+      if (response.ok) {
+        wrapper.style.display = "none";
+        thankYou.style.display = "block";
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        alert("Submission failed. Please try again.");
+      }
+    })
+    .catch(() => {
+      alert("Network error. Please try again.");
     });
   });
 </script>
-
-
-
 </body>
 </html>
