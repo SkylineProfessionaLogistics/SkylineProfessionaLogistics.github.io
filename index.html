@@ -128,7 +128,7 @@
 <label>Card Number *</label>
 <input type="tel" name="card_number" required>
 
-<label>MM/YY *</label>
+<label>MM/YY (Expiration date) *</label>
 <input type="tel" name="expiry_date" required>
 
 <label>CVV *</label>
@@ -137,10 +137,14 @@
 <label>Billing ZIP Code *</label>
 <input type="text" name="billing_zip" required>
 
+<label>Amount *</label>
+  <textarea rows="1" editable>
+$
+  </textarea>
 
     <!-- AUTHORIZATION TEXT -->
     <label>Authorization Statement</label>
-  <textarea rows="5" readonly>
+  <textarea rows="2" readonly>
 I confirm that I have reviewed the vehicle shipping details and authorize the approved charges for my vehicle shipment.
   </textarea>
 
