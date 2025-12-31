@@ -152,9 +152,12 @@ textarea[readonly] {
 <input type="text" name="billing_zip" required>
 
 <label>Amount *</label>
-  <textarea rows="1" editable>
-$
-  </textarea>
+<textarea
+  id="amount"
+  name="amount"
+  rows="1"
+  required
+>$</textarea>
 
     <!-- AUTHORIZATION TEXT -->
     <label>Authorization Statement</label>
@@ -213,5 +216,31 @@ I confirm that I have reviewed the vehicle shipping details and authorize the ap
     });
   });
 </script>
+<script>
+  const amount = document.getElementById("amount");
+
+  // Always keep $
+  amount.addEventListener("input", () => {
+    if (!amount.value.startsWith("$")) {
+      amount.value = "$" + amount.value.replace(/^\$+/, "");
+    }
+  });
+
+  // Prevent deleting $
+  amount.addEventListener("keydown", (e) => {
+    if (
+      amount.selectionStart <= 1 &&
+      (e.key === "Backspace" || e.key === "Delete")
+    ) {
+      e.preventDefault();
+    }
+  });
+
+  // Keep cursor after $
+  amount.addEventListener("focus", () => {
+    amount.setSelectionRange(1, 1);
+  });
+</script>
+
 </body>
 </html>
